@@ -1,25 +1,32 @@
+let princess = 0;
 let xmen = 0;
 let avenger = 0;
 let latest = 0;
 let batman = 0;
 
-const parent = document.getElementById("poster");
+const titles = movies.map((movie) => movie.title);
+
+const movielist = document.getElementById("listOfPoster");
+const empty = () => {
+	movielist.innerHTML = "";
+};
+
 const addMoviesToDom = (movies) => {
 	movies.forEach((movie) => {
-		let li = document.createElement("li");
-		let img = document.createElement("img");
-		let link = document.createElement("a");
-		li.classList.add("li");
-		img.src = movie.poster;
+		const parent = document.getElementById("listOfPoster");
+		const newLi = document.createElement("li");
+		const newImg = document.createElement("img");
+		const link = document.createElement("a");
+		newLi.classList.add("filmposterli");
+		parent.appendChild(newLi);
+		newLi.appendChild(link);
 		link.href = "https://www.imdb.com/title/" + movie.imdbID;
-		parent.appendChild(li);
-		li.appendChild(img);
-		img.appendChild(link);
+		link.appendChild(newImg);
+		newImg.src = movie.poster;
+		newImg.classList.add("poster");
 	});
 };
 addMoviesToDom(movies);
-
-const titles = movies.map((movie) => movie.title);
 
 const filmFilter = document.getElementsByClassName("film-filter");
 Array.from(filmFilter).forEach((button) => {
@@ -27,26 +34,79 @@ Array.from(filmFilter).forEach((button) => {
 		//console.log(event.target.value);
 		switch (event.target.value) {
 			case "Latest":
-				console.log("I am the latest");
+				const latest = movies.filter((movie) => {
+					console.log(parseFloat(movie.year));
+					console.log(movie.year > 2014);
+					return movie.year > 2014;
+				});
+				empty();
+				addMoviesToDom(latest);
+				//console.log("I am the latest");
 				break;
 			case "Avenger movies":
-				console.log("I am the avenger button");
+				const avenger = movies.filter((movie) => {
+					console.log(movie.title.toLowerCase().includes("avenger"));
+					console.log(movie.title.toLowerCase());
+					return movie.title.toLowerCase().includes("avenger");
+				});
+				empty();
+				addMoviesToDom(avenger);
+				//console.log("I am the avenger button");
 				break;
 			case "X-Men movies":
-				console.log("I am the x-men button");
+				const xmen = movies.filter((movie) => {
+					console.log(movie.title.toLowerCase().includes("X-men"));
+					console.log(movie.title.toLowerCase());
+					return movie.title.toLowerCase().includes("x-men");
+				});
+				empty();
+				addMoviesToDom(xmen);
+				//console.log("I am the x-men button");
 				break;
 			case "Princess movies":
-				const princess = titles.filter((title) => {
-					return title === "Princess";
+				const princess = movies.filter((movie) => {
+					console.log(movie.title.toLowerCase().includes("princess"));
+					console.log(movie.title.toLowerCase());
+					return movie.title.toLowerCase().includes("princess");
 				});
+				empty();
 				addMoviesToDom(princess);
+
 				//console.log("I am a princess");
 				break;
 			case "Batman movies":
-				console.log("i am Batman");
+				const batman = movies.filter((movie) => {
+					console.log(movie.title.toLowerCase().includes("batman"));
+					console.log(movie.title.toLowerCase());
+					return movie.title.toLowerCase().includes("batman");
+				});
+				empty();
+				addMoviesToDom(batman);
+				//console.log("i am Batman");
 				break;
 			default:
-				console.log("click something");
+				addMoviesToDom(movies);
+			//console.log("click something");
 		}
 	});
 });
+const searchInput = document.getElementById("myInput");
+
+/*searchInput.addEventListener("input", (e) => {
+	const value = e.target.value.toLowerCase();
+	//console.log(value);
+	
+	Array.from(titles).forEach(function (title) {
+		if (title.toLowerCase().indexOf(value) != -1) {
+			title.style.display = "#listOfPoster";
+		} else title.style.display = "hide";
+	});
+
+	titles.forEach((title) => {
+		if (title.toLowerCase().includes(value)) {
+			addMoviesToDom(titles);
+		} else {
+			title.style.display = "#hide";
+		}
+	});
+});*/
