@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Film Finder</title>
+		<link rel="stylesheet" type="text/css" href="./style.css" />
+		<script defer type="text/javascript" src="films.js"></script>
+		<script defer type="text/javascript" src="script.js"></script>
+	</head>
+
+	<body>
+		<h1 class="head">Winc Film Finder</h1>
+		<p class="text">Klik op een van de buttons om de films te filteren</p>
+		<nav>
+			<ul class="navlist">
+				<li class="navbutton">
+					<button class="film-filter">
+						<input type="radio" id="latest" name="navbutton" value="Latest" />
+						<label>Latest movies, 2014 or newer</label>
+					</button>
+				</li>
+				<li class="navbutton">
+					<button class="film-filter">
+						<input
+							type="radio"
+							id="avenger"
+							name="navbutton"
+							value="Avenger movies"
+						/>
+						<label>Avenger movies</label>
+					</button>
+				</li>
+				<li class="navbutton">
+					<button class="film-filter">
+						<input
+							type="radio"
+							id="X-Men"
+							name="navbutton"
+							value="X-Men movies"
+						/>
+						<label>X-Men movies</label>
+					</button>
+				</li>
+				<li class="navbutton">
+					<button class="film-filter">
+						<input
+							type="radio"
+							id="Princess"
+							name="navbutton"
+							value="Princess movies"
+						/>
+						<label>Princess movies</label>
+					</button>
+				</li>
+				<li class="navbutton">
+					<button class="film-filter">
+						<input
+							type="radio"
+							id="Batman"
+							name="navbutton"
+							value="Batman movies"
+						/>
+						<label>Batman movies</label>
+					</button>
+				</li>
+
+				<li class="navbutton">
+					<input type="text" id="searchInput" placeholder="Search for films" />
+				</li>
+			</ul>
+		</nav>
+		<div class="filmposterfield">
+			<ul id="listOfPoster"></ul>
+		</div>
+	</body>
+</html>
